@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" th:href="@{/css/layout.css}" />
+</head>
+
+<body>
+	<h1>Elenco studenti</h1>
+	<table>
+		<thead>
+			<th>Matricola</th>
+			<th>Cognome</th>
+			<th>Nome</th>
+			<th>Nato/a il</th>
+			<th>Indirizzo</th>
+			<th>Città</th>
+			<th>Email</th>
+			<th>Corso di Laurea</th>
+		</thead>
+		<tbody>
+			<tr th:each="item: ${students}">
+				<td th:text="${item.getStudentId()}"></td>
+				<td th:text="${item.getSurname()}"></td>
+				<td th:text="${item.getName()}"></td>
+				<td th:text="${item.getBornDate()}"></td>
+				<td th:text="${item.getAddress()}"></td>
+				<td th:text="${item.getCity()}"></td>
+				<td th:text="${item.getEmail()}"></td>
+				<td th:text="${item.getDegreeCourse().getName()}"></td>
+				<td><a th:href="@{/students/updateStudent/{id}(id=${item.getStudentId})}">Update</a></td>
+				<td><a th:href="@{/students/deleteStudent/{id}(id=${item.getStudentId})}" onclick="return confirm('Confermi?')">Delete</a></td>
+			</tr>
+		</tbody>
+	</table>
+	<a href="/students/insertStudent">Add student</a>
+</body>
+
+</html>

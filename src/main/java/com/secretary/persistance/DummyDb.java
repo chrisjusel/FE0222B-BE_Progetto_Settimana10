@@ -45,9 +45,15 @@ public class DummyDb {
 		return new ArrayList<Student>(students.values());
 	}
 
+	public Student getStudentById(String id) {
+		if(students.containsKey(id))
+			return students.get(id);
+		return null;
+	}
+	
 	public DegreeCourse insertDegreeCourse(DegreeCourse d) {
-		if (!degreeCoruse.containsKey(d.getCouseId())) {
-			degreeCoruse.put(d.getCouseId(), d);
+		if (!degreeCoruse.containsKey(d.getCourseId())) {
+			degreeCoruse.put(d.getCourseId(), d);
 			return d;
 		}
 		return null;
@@ -62,8 +68,8 @@ public class DummyDb {
 	}
 
 	public boolean updateDegreeCourse(DegreeCourse d) {
-		if (degreeCoruse.containsKey(d.getCouseId())) {
-			degreeCoruse.put(d.getCouseId(), d);
+		if (degreeCoruse.containsKey(d.getCourseId())) {
+			degreeCoruse.put(d.getCourseId(), d);
 			return true;
 		}
 		return false;
@@ -71,6 +77,10 @@ public class DummyDb {
 
 	public List<DegreeCourse> getAllDegreeCourses() {
 		return new ArrayList<DegreeCourse>(degreeCoruse.values());
+	}
+	
+	public DegreeCourse getDegreeCourseById(String id) {
+		return degreeCoruse.get(id);
 	}
 
 }

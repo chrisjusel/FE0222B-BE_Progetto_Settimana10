@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<link rel="stylesheet" th:href="@{/css/layout.css}" />
+</head>
+
+<body>
+	<header class="header">
+		<h1>University of Atlantide</h1>
+	</header>
+	<h2>Update Student</h2>
+	<form action="#" th:action="@{/students/updateStudentFromForm}"
+		th:object="${student}" method="post">
+
+		<p>
+			Student id: <input type="text" th:field="*{studentId}" readonly />
+		</p>
+		<p>
+			Name <input type="text" th:field="*{name}" />
+			<span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+		</p>
+
+		<p>
+			Surname <input type="text" th:field="*{surname}" />
+			<span th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}"></span>
+		</p>
+
+		<p>
+			Born date: <input type="date" th:field="*{bornDate}"/>
+			<span th:if="${#fields.hasErrors('bornDate')}" th:errors="*{bornDate}"></span>
+		</p>
+
+		<p>
+			Address <input type="text" th:field="*{address}" />
+			<span th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></span>
+		</p>
+
+		<p>
+			City <input type="text" th:field="*{city}" />
+			<span th:if="${#fields.hasErrors('city')}" th:errors="*{city}"></span>
+		</p>
+
+		<p>
+			Email <input type="text" th:field="*{email}" />
+			<span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+		</p>
+
+		<div>
+			<label for="courses">Degree courses</label> <select type="text"
+				th:field="*{degreeCourse}" name="courses">
+				<option th:value="${item.getCourseId()}" th:each="item: ${courses}"
+					th:text="${item.getName()}"></option>
+			</select>
+		</div>
+
+		<p>
+			<input type="submit" value="Submit" /> <input type="reset"
+				value="Reset" />
+		</p>
+</body>
+
+</html>

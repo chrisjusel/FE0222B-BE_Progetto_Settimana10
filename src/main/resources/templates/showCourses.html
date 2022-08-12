@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" th:href="@{/css/layout.css}" />
+</head>
+
+<body>
+	<h1>Courses list</h1>
+	<table>
+		<thead>
+			<th>Course id</th>
+			<th>Name</th>
+			<th>Address</th>
+			<th>Exams Number</th>
+		</thead>
+		<tbody>
+			<tr th:each="item: ${courses}">
+				<td th:text="${item.getCourseId}"></td>
+				<td th:text="${item.getName()}"></td>
+				<td th:text="${item.getAddress()}"></td>
+				<td th:text="${item.getExamsNumber()}"></td>
+				<td><a th:href="@{/courses/updateCourse/{id}(id=${item.getCourseId})}">Update</a></td>
+				<td><a th:href="@{/courses/deleteCourse/{id}(id=${item.getCourseId})}" onclick="return confirm('Confermi?')">Delete</a></td>
+			</tr>
+		</tbody>
+	</table>
+	<a href="/courses/insertCourse">Add course</a>
+</body>
+
+</html>
