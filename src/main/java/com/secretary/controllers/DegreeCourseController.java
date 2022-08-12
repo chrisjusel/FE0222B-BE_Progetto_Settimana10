@@ -30,7 +30,6 @@ public class DegreeCourseController {
 
 	@GetMapping("/showCourses")
 	public String getAll(ModelMap m) {
-		System.out.println(dummyDb);
 		List<DegreeCourse> courses = dummyDb.getAllDegreeCourses();
 		m.addAttribute("courses", courses);
 		return "showCourses";

@@ -16,7 +16,6 @@ public abstract class StudentDtoConverter {
 		student.setCity(studentDto.getCity());
 		student.setEmail(studentDto.getEmail());
 		student.setDegreeCourse(converter.convert(studentDto.getDegreeCourse()));
-		System.out.println("da converter " + student.getDegreeCourse().getName());
 		return student;
 	}
 }
