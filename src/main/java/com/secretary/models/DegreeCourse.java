@@ -1,3 +1,8 @@
+/**
+ * Sugli attributi di questa classe sono presenti i vincoli
+ * e i messaggi di errore che saranno visualizzati se tali vincoli
+ * non vengono soddisfatti dall'utente nel front-end
+ */
 package com.secretary.models;
 
 import javax.validation.constraints.Min;

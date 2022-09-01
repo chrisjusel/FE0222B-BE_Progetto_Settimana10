@@ -107,7 +107,7 @@ public class DegreeCourseController {
 	/**
 	 * Questo metodo viene scatenato quando un utente clicca sul tasto delete
 	 * accanto ad un corso;
-	 * All'url viene passato l'id dell'utente da eliminare, ed esso viene eliminato
+	 * All'url viene passato l'id del corso da eliminare, ed esso viene eliminato
 	 * @param m
 	 * @param id
 	 * @return

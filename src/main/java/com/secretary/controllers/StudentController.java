@@ -25,8 +25,18 @@ import com.secretary.util.StudentDtoConverter;
 @RequestMapping("/students")
 public class StudentController {
 	
+	/**
+	 * Recupero dell'istanza del db
+	 */
 	DummyDb dummyDb = BeanBuilder.getIstance();
 
+	/**
+	 * Questo metodo recupera tutti gli studenti dalla base dati, li aggiunge
+	 * alla ModelMap per passarli al frontend e reindirizza alla pagina di
+	 * visualizzazione degli studenti
+	 * @param m
+	 * @return
+	 */
 	@GetMapping("/showStudents")
 	public String getAll(ModelMap m) {
 		List<Student> students = dummyDb.getAllStudents();
@@ -34,6 +44,12 @@ public class StudentController {
 		return "showStudents";
 	}
 
+	/**
+	 * Questo metodo rende possibile la visualizzazione della pagina che mostra
+	 * il form che permette di inserire un nuovo studente
+	 * @param m
+	 * @return
+	 */
 	@GetMapping(value = "/insertStudent")
 	public ModelAndView showFormInsert(ModelMap m) {
 		List<DegreeCourse> courses = dummyDb.getAllDegreeCourses();;
@@ -41,6 +57,16 @@ public class StudentController {
 		return new ModelAndView("insertStudent", "student", new StudentDto());
 	}
 
+	/**
+	 * Questo metodo viene scatenato al submit dei dati di un nuovo studente;
+	 * Se tutti i campi del form di inserimento sono stati soddisfatti,
+	 * un nuovo studente viene inserito, altrimenti vengono visualizzati
+	 * i messaggi di errore dei form che indicano ciò che va modificato
+	 * @param course
+	 * @param result
+	 * @param m
+	 * @return
+	 */
 	@PostMapping(value = "/insertStudentFromForm")
 	public String submitAdd(@Valid @ModelAttribute("student") StudentDto studentDto, BindingResult result, ModelMap m) {
 		if (!result.hasErrors()) {
@@ -56,6 +82,12 @@ public class StudentController {
 		return "redirect:showStudents";
 	}
 
+	/**
+	 * Questo metodo rende possibile la visualizzazione della pagina che mostra
+	 * il form che permette di modificare uno studente
+	 * @param m
+	 * @return
+	 */
 	@GetMapping(value = "/updateStudent/{studentId}")
 	public ModelAndView showFormUpdate(ModelMap m, @PathVariable(name = "studentId") String studentId) {
 		Student student = dummyDb.getStudentById(studentId);
@@ -64,6 +96,16 @@ public class StudentController {
 		return new ModelAndView("updateStudent", "student", student);
 	}
 
+	/**
+	 * Questo metodo viene scatenato al submit dei dati di uno studente da modificare;
+	 * Se tutti i campi del form di inserimento sono stati soddisfatti,
+	 * lo studente viene modificato, altrimenti vengono visualizzati
+	 * i messaggi di errore dei form che indicano ciò che va modificato
+	 * @param course
+	 * @param result
+	 * @param m
+	 * @return
+	 */
 	@PostMapping(value = "/updateStudentFromForm")
 	public String update(StudentDto studentDto) {
 		Student student = StudentDtoConverter.convertToStudent(studentDto);
@@ -72,6 +114,14 @@ public class StudentController {
 		return "redirect:showStudents";
 	}
 
+	/**
+	 * Questo metodo viene scatenato quando un utente clicca sul tasto delete
+	 * accanto ad uno studente;
+	 * All'url viene passato l'id dello studente da eliminare, ed esso viene eliminato
+	 * @param m
+	 * @param id
+	 * @return
+	 */
 	@GetMapping(value = "/deleteStudent/{id}")
 	public String delete(ModelMap m, @PathVariable("id") String id) {
 		dummyDb.deleteStudent(id);

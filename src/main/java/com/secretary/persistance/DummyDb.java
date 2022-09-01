@@ -1,3 +1,7 @@
+/**
+ * Questa classe, a puro scopo didattico, simula un database ed espone
+ * i metodi CRUD sia dei corsi che degli studenti
+ */
 package com.secretary.persistance;
 
 import java.util.ArrayList;
