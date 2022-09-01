@@ -4,8 +4,6 @@ import java.util.List;
 
 import javax.validation.Valid;
 
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -16,7 +14,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.secretary.config.DummyDbConfig;
 import com.secretary.dto.StudentDto;
 import com.secretary.models.DegreeCourse;
 import com.secretary.models.Student;
@@ -27,8 +24,7 @@ import com.secretary.util.StudentDtoConverter;
 @Controller
 @RequestMapping("/students")
 public class StudentController {
-
-	ApplicationContext ctx = new AnnotationConfigApplicationContext(DummyDbConfig.class);
+	
 	DummyDb dummyDb = BeanBuilder.getIstance();
 
 	@GetMapping("/showStudents")

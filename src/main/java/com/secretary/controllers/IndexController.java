@@ -1,3 +1,7 @@
+/**
+ * Questa classe ha il solo scopo di reindirizzare l'utente alla pagina
+ * index quando va sull'url dell'applicazione
+ */
 package com.secretary.controllers;
 
 import org.springframework.stereotype.Controller;

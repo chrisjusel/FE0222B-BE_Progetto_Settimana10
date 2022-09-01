@@ -1,3 +1,7 @@
+/**
+ * Lo scopo di questa classe è inserire dati di test all'interno
+ * della base dati fake
+ */
 package com.secretary.config;
 
 import org.springframework.context.annotation.Bean;

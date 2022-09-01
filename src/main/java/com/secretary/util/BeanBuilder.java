@@ -5,7 +5,6 @@
  * c'erano due istanze del DummyDb nell'applicazione. Con questa classe viene istanziato 1
  * solo DummyDb sul quale vengono effettuate le operazioni.
  * 
- * So che probabilmente non è un approccio corretto, ma non ho trovato altri modi per farlo
  */
 package com.secretary.util;
 
